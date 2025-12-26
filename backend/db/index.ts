@@ -1,5 +1,5 @@
 import { SQLDatabase } from "encore.dev/storage/sqldb";
 
-export default new SQLDatabase("db", {
+export const contactDB = new SQLDatabase("contact", {
   migrations: "./migrations",
 });

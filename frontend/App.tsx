@@ -1,28 +1,41 @@
-import { Navigation } from "./components/Navigation";
-import { Hero } from "./components/Hero";
-import { About } from "./components/About";
-import { Skills } from "./components/Skills";
-import { Projects } from "./components/Projects";
-import { Contact } from "./components/Contact";
-import { Toaster } from "@/components/ui/toaster";
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import ShowreelSection from "./components/ShowreelSection";
+import FeaturedWork from "./components/FeaturedWork";
+import About from "./components/About";
+import Services from "./components/Services";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
 
-export default function App() {
+const Portfolio = () => {
   return (
-    <div className="dark min-h-screen bg-background text-foreground">
-      <Navigation />
+    <div className="bg-black min-h-screen">
+      <Header />
       <main>
         <Hero />
+        <ShowreelSection />
+        <FeaturedWork />
         <About />
-        <Skills />
-        <Projects />
+        <Services />
         <Contact />
       </main>
-      <footer className="border-t border-border py-8">
-        <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>&copy; {new Date().getFullYear()} All rights reserved.</p>
-        </div>
-      </footer>
-      <Toaster />
+      <Footer />
+    </div>
+  );
+};
+
+function App() {
+  return (
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Portfolio />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
+
+export default App;
