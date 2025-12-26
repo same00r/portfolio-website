@@ -49,7 +49,7 @@ const ShowreelSection = () => {
               <h2 className="text-6xl md:text-8xl lg:text-9xl font-display font-bold text-white tracking-tighter leading-none">
                 REEL
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
-                  2024
+                  2025
                 </span>
               </h2>
             </div>
