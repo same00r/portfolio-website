@@ -134,8 +134,5 @@ export const services = [
 ];
 
 export const stats = [
-  { value: "200+", label: "Projects Completed" },
-  { value: "8+", label: "Years Experience" },
-  { value: "50M+", label: "Views Generated" },
-  { value: "15", label: "Awards Won" }
+
 ];
