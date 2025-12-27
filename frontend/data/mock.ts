@@ -134,5 +134,8 @@ export const services = [
 ];
 
 export const stats = [
-
+  { value: "100+", label: "Projects" },
+  { value: "50+", label: "Clients" },
+  { value: "5+", label: "Years" },
+  { value: "20+", label: "Awards" }
 ];
