@@ -2,7 +2,7 @@ export const editorProfile = {
   name: "Samer Hanna",
   title: "Professional Video Editor",
   tagline: "Crafting visual stories that move audiences",
-  bio: "Award-winning video editor with experience in commercial, documentary, and narrative filmmaking. Specializing in dynamic storytelling through seamless edits and captivating visuals.",
+  bio: "video editor with experience in commercial, documentary, and narrative filmmaking. Specializing in dynamic storytelling through seamless edits and captivating visuals.",
   email: "samerhanna001@gmail.com",
   phone: "0991764695",
   location: "Syria",
@@ -134,8 +134,8 @@ export const services = [
 ];
 
 export const stats = [
-  { value: "100+", label: "Projects" },
-  { value: "50+", label: "Clients" },
-  { value: "5+", label: "Years" },
-  { value: "20+", label: "Awards" }
+  { value: "50+", label: "Projects" },
+  { value: "25+", label: "Clients" },
+  { value: "2+", label: "Years" },
+  
 ];
