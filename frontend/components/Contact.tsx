@@ -157,7 +157,7 @@ const Contact = () => {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full h-14 bg-gradient-to-r from-amber-500 to-orange-600 text-black font-semibold rounded-full hover:from-amber-400 hover:to-orange-500 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-base"
+                className="w-full h-14 bg-gradient-to-r from-amber-500 to-orange-600 text-black font-semibold rounded-full hover:from-amber-400 hover:to-orange-500 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-base flex flex-col items-center justify-center gap-1"
               >
                 {isSubmitting ? (
                   <motion.div
@@ -167,7 +167,7 @@ const Contact = () => {
                   />
                 ) : (
                   <>
-                    <Send className="w-5 h-5 mr-2" />
+                    <Send className="w-5 h-5" />
                     Send Message
                   </>
                 )}
