@@ -89,11 +89,11 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="p-8 md:p-10 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-sm shadow-2xl">
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
+            <div className="p-6 md:p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-sm">
+              <form onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid md:grid-cols-2 gap-5">
                   <div className="space-y-2">
-                    <Label htmlFor="name" className="text-gray-200 text-sm font-medium">Name *</Label>
+                    <Label htmlFor="name" className="text-gray-300 text-sm">Name *</Label>
                     <Input
                       id="name"
                       name="name"
@@ -101,11 +101,11 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="Your name"
                       required
-                      className="bg-white/5 border-white/20 text-white placeholder:text-gray-500 focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20 h-12 rounded-lg transition-all"
+                      className="bg-black/40 border-white/10 text-white placeholder:text-gray-600 focus:border-amber-400/50 focus:ring-1 focus:ring-amber-400/30 h-11 rounded-lg"
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label htmlFor="email" className="text-gray-200 text-sm font-medium">Email *</Label>
+                    <Label htmlFor="email" className="text-gray-300 text-sm">Email *</Label>
                     <Input
                       id="email"
                       name="email"
@@ -114,25 +114,25 @@ const Contact = () => {
                       onChange={handleChange}
                       placeholder="your@email.com"
                       required
-                      className="bg-white/5 border-white/20 text-white placeholder:text-gray-500 focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20 h-12 rounded-lg transition-all"
+                      className="bg-black/40 border-white/10 text-white placeholder:text-gray-600 focus:border-amber-400/50 focus:ring-1 focus:ring-amber-400/30 h-11 rounded-lg"
                     />
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="project" className="text-gray-200 text-sm font-medium">Project Type</Label>
+                  <Label htmlFor="project" className="text-gray-300 text-sm">Project Type</Label>
                   <Input
                     id="project"
                     name="project"
                     value={formData.project}
                     onChange={handleChange}
                     placeholder="e.g., Commercial, Music Video, Documentary"
-                    className="bg-white/5 border-white/20 text-white placeholder:text-gray-500 focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20 h-12 rounded-lg transition-all"
+                    className="bg-black/40 border-white/10 text-white placeholder:text-gray-600 focus:border-amber-400/50 focus:ring-1 focus:ring-amber-400/30 h-11 rounded-lg"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message" className="text-gray-200 text-sm font-medium">Message *</Label>
+                  <Label htmlFor="message" className="text-gray-300 text-sm">Message *</Label>
                   <Textarea
                     id="message"
                     name="message"
@@ -140,8 +140,8 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Tell me about your project..."
                     required
-                    rows={6}
-                    className="bg-white/5 border-white/20 text-white placeholder:text-gray-500 focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20 resize-none rounded-lg transition-all"
+                    rows={5}
+                    className="bg-black/40 border-white/10 text-white placeholder:text-gray-600 focus:border-amber-400/50 focus:ring-1 focus:ring-amber-400/30 resize-none rounded-lg"
                   />
                 </div>
 
@@ -149,7 +149,7 @@ const Contact = () => {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="flex items-center gap-2 p-4 bg-green-500/10 border border-green-500/20 rounded-lg"
+                    className="flex items-center gap-2 p-3 bg-green-500/10 border border-green-500/20 rounded-lg"
                   >
                     <CheckCircle2 className="w-5 h-5 text-green-400" />
                     <span className="text-green-400 text-sm font-medium">Message sent successfully!</span>
@@ -159,7 +159,7 @@ const Contact = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full h-14 bg-gradient-to-r from-amber-400 to-orange-500 text-black font-semibold rounded-lg hover:from-amber-500 hover:to-orange-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-amber-400/20 hover:shadow-amber-400/40"
+                  className="w-full h-12 bg-gradient-to-r from-amber-500 to-orange-600 text-black font-semibold rounded-lg hover:from-amber-400 hover:to-orange-500 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg"
                 >
                   {isSubmitting ? (
                     <motion.div
@@ -169,7 +169,7 @@ const Contact = () => {
                     />
                   ) : (
                     <>
-                      <Send className="w-5 h-5 mr-2" />
+                      <Send className="w-4 h-4 mr-2" />
                       Send Message
                     </>
                   )}
@@ -195,7 +195,7 @@ const Contact = () => {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="flex items-start gap-4 p-6 rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-sm hover:border-amber-400/30 transition-all duration-300"
                 >
-                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-400/20 to-orange-500/20 flex items-center justify-center flex-shrink-0 shadow-lg shadow-amber-400/10">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-400/20 to-orange-500/20 flex items-center justify-center flex-shrink-0">
                     <info.icon className="w-6 h-6 text-amber-400" />
                   </div>
                   <div>
