@@ -203,6 +203,29 @@ const Contact = () => {
               ))}
             </div>
 
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="p-8 rounded-2xl border border-amber-500/30 bg-gradient-to-br from-amber-500/10 to-orange-600/10 backdrop-blur-sm relative overflow-hidden"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-400/5 to-orange-500/5" />
+              <div className="relative z-10">
+                <div className="flex items-center gap-3 mb-4">
+                  <motion.div
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
+                    className="w-3 h-3 bg-green-400 rounded-full shadow-lg shadow-green-400/50"
+                  />
+                  <h3 className="text-xl font-display font-bold text-green-400">Available for Projects</h3>
+                </div>
+                <p className="text-gray-300 text-base leading-relaxed">
+                  Currently accepting new projects for Q3 2025. Let's discuss your vision.
+                </p>
+              </div>
+            </motion.div>
+
             <div className="p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-sm">
               <h3 className="text-xl font-display font-bold text-white mb-6">Follow Me</h3>
               <div className="flex gap-4">
