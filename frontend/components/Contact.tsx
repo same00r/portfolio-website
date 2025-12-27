@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, Instagram, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, Instagram, Facebook, CheckCircle2 } from 'lucide-react';
 import { editorProfile } from '../data/mock';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
@@ -37,9 +37,10 @@ const Contact = () => {
       
       setSubmitted(true);
       setFormData({ name: '', email: '', project: '', message: '' });
-      setTimeout(() => setSubmitted(false), 3000);
+      setTimeout(() => setSubmitted(false), 5000);
     } catch (error) {
       console.error('Failed to submit contact form:', error);
+      alert('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -81,89 +82,100 @@ const Contact = () => {
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-16 max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
+            <div className="p-8 md:p-10 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-sm shadow-2xl">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label htmlFor="name" className="text-gray-200 text-sm font-medium">Name *</Label>
+                    <Input
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Your name"
+                      required
+                      className="bg-white/5 border-white/20 text-white placeholder:text-gray-500 focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20 h-12 rounded-lg transition-all"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-gray-200 text-sm font-medium">Email *</Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="your@email.com"
+                      required
+                      className="bg-white/5 border-white/20 text-white placeholder:text-gray-500 focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20 h-12 rounded-lg transition-all"
+                    />
+                  </div>
+                </div>
+
                 <div className="space-y-2">
-                  <Label htmlFor="name" className="text-gray-300">Name</Label>
+                  <Label htmlFor="project" className="text-gray-200 text-sm font-medium">Project Type</Label>
                   <Input
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    id="project"
+                    name="project"
+                    value={formData.project}
                     onChange={handleChange}
-                    placeholder="Your name"
-                    required
-                    className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-amber-400/50 focus:ring-amber-400/20 h-12"
+                    placeholder="e.g., Commercial, Music Video, Documentary"
+                    className="bg-white/5 border-white/20 text-white placeholder:text-gray-500 focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20 h-12 rounded-lg transition-all"
                   />
                 </div>
+
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-gray-300">Email</Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
+                  <Label htmlFor="message" className="text-gray-200 text-sm font-medium">Message *</Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
                     onChange={handleChange}
-                    placeholder="your@email.com"
+                    placeholder="Tell me about your project..."
                     required
-                    className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-amber-400/50 focus:ring-amber-400/20 h-12"
+                    rows={6}
+                    className="bg-white/5 border-white/20 text-white placeholder:text-gray-500 focus:border-amber-400/50 focus:ring-2 focus:ring-amber-400/20 resize-none rounded-lg transition-all"
                   />
                 </div>
-              </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="project" className="text-gray-300">Project Type</Label>
-                <Input
-                  id="project"
-                  name="project"
-                  value={formData.project}
-                  onChange={handleChange}
-                  placeholder="e.g., Commercial, Music Video, Documentary"
-                  className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-amber-400/50 focus:ring-amber-400/20 h-12"
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label htmlFor="message" className="text-gray-300">Message</Label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Tell me about your project..."
-                  required
-                  rows={6}
-                  className="bg-white/5 border-white/10 text-white placeholder:text-gray-500 focus:border-amber-400/50 focus:ring-amber-400/20 resize-none"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full h-14 bg-white text-black font-semibold rounded-full hover:bg-amber-400 transition-all duration-300 disabled:opacity-50"
-              >
-                {isSubmitting ? (
+                {submitted && (
                   <motion.div
-                    animate={{ rotate: 360 }}
-                    transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
-                    className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full"
-                  />
-                ) : submitted ? (
-                  'Message Sent!'
-                ) : (
-                  <>
-                    <Send className="w-5 h-5 mr-2" />
-                    Send Message
-                  </>
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="flex items-center gap-2 p-4 bg-green-500/10 border border-green-500/20 rounded-lg"
+                  >
+                    <CheckCircle2 className="w-5 h-5 text-green-400" />
+                    <span className="text-green-400 text-sm font-medium">Message sent successfully!</span>
+                  </motion.div>
                 )}
-              </Button>
-            </form>
+
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full h-14 bg-gradient-to-r from-amber-400 to-orange-500 text-black font-semibold rounded-lg hover:from-amber-500 hover:to-orange-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-amber-400/20 hover:shadow-amber-400/40"
+                >
+                  {isSubmitting ? (
+                    <motion.div
+                      animate={{ rotate: 360 }}
+                      transition={{ repeat: Infinity, duration: 1, ease: 'linear' }}
+                      className="w-5 h-5 border-2 border-black/20 border-t-black rounded-full"
+                    />
+                  ) : (
+                    <>
+                      <Send className="w-5 h-5 mr-2" />
+                      Send Message
+                    </>
+                  )}
+                </Button>
+              </form>
+            </div>
           </motion.div>
 
           <motion.div
@@ -181,9 +193,9 @@ const Contact = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex items-start gap-4 p-6 rounded-xl border border-white/10 bg-white/[0.02]"
+                  className="flex items-start gap-4 p-6 rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-sm hover:border-amber-400/30 transition-all duration-300"
                 >
-                  <div className="w-12 h-12 rounded-lg bg-amber-400/10 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-amber-400/20 to-orange-500/20 flex items-center justify-center flex-shrink-0 shadow-lg shadow-amber-400/10">
                     <info.icon className="w-6 h-6 text-amber-400" />
                   </div>
                   <div>
@@ -194,7 +206,7 @@ const Contact = () => {
               ))}
             </div>
 
-            <div className="p-8 rounded-2xl border border-white/10 bg-white/[0.02]">
+            <div className="p-8 rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.05] to-white/[0.02] backdrop-blur-sm">
               <h3 className="text-xl font-display font-bold text-white mb-6">Follow Me</h3>
               <div className="flex gap-4">
                 {Object.entries(editorProfile.social).map(([platform, url]) => {
@@ -207,7 +219,7 @@ const Contact = () => {
                       rel="noopener noreferrer"
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.9 }}
-                      className="w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center text-gray-400 hover:text-amber-400 hover:border-amber-400/50 transition-all duration-300"
+                      className="w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center text-gray-400 hover:text-amber-400 hover:border-amber-400/50 hover:bg-amber-400/10 transition-all duration-300"
                     >
                       {IconComponent && <IconComponent className="w-6 h-6" />}
                     </motion.a>
